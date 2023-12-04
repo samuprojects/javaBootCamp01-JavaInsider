@@ -6,13 +6,10 @@ public class Game {
     private final Board board = new Board();
     private final Players players = new Players();
 
-    public void start(){
-        System.out.println("Jogo iniciado");
+    public void start() {
 
-        // testando troca de jogadores
-        System.out.println(players.next());
-        System.out.println(players.next());
-        System.out.println(players.next());
-        System.out.println(players.next());
+        // teste impressão do tabuleiro
+        System.out.println(board);
+
     }
 }
