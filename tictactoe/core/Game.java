@@ -8,5 +8,11 @@ public class Game {
 
     public void start(){
         System.out.println("Jogo iniciado");
+
+        // testando troca de jogadores
+        System.out.println(players.next());
+        System.out.println(players.next());
+        System.out.println(players.next());
+        System.out.println(players.next());
     }
 }
