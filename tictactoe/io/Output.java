@@ -13,11 +13,22 @@ public final class Output {
         write(null);
     }
 
-    public static void write (Object obj) { // o método estático podera ser chamado sem necessidade de uma instância do Objeto Output
+    public static void write (Object obj) {
+        write(obj, true); // aqui não passando nada adiciona uma novalinha, senão segue o outro construtor
+    }
+
+    public static void write (Object obj, boolean addNewLine) { // o método estático podera ser chamado sem necessidade de uma instância do Objeto Output
         if (obj == null) {
             System.out.println();
         } else {
-            System.out.println(obj);
+            // se o objeto for diferente de nulo
+            if (addNewLine){
+                System.out.println(obj);
+            } else {
+                // senão faz só o print so objeto
+                System.out.println(obj);
+
+            }
         }
     }
 }
