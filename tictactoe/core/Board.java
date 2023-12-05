@@ -12,9 +12,9 @@ public class Board {
     public final Symbol[][] matrix = new Symbol[SIZE][SIZE];
 
     // tabuleiro deve iniciar vazio com símbolo do NONE
-    public Board(){
+    public Board() {
         for (Symbol[] symbols : matrix) {
-            Arrays.fill(symbols, Symbol.X);// método que preenche o array os índices do array com alguma coisa
+            Arrays.fill(symbols, Symbol.NONE);// método que preenche o array os índices do array com alguma coisa
         }
     }
 
@@ -34,12 +34,29 @@ public class Board {
         PrintWriter out = new PrintWriter(sw);
 
         for (int i = 0; i < SIZE; i++) {
-            for (int j = 0; j < SIZE; j++){
-                out.print(matrix[i][j] + " ");
+
+            boolean first = true;
+            for (int j = 0; j < SIZE; j++) {
+                if (!first) {
+                    out.print(" | "); // acrescenta separador com pipe onde não seja o primeiro símbolo à esquerda
+                }
+
+                out.print(matrix[i][j]);
+                first = false; // para imprimir o pipe após os demais símbolos
 
             }
+            out.println(); // quebra linha no formato do jogo
+
+            if (i + 1 < SIZE) { // lógica para não imprimir quando for a última linha com símbolos
+                for (int j = 0; j < SIZE; j++) {
+                    out.print("---"); // impressão linha separadora após a quebra da linha
+                }
+            }
+
+            out.println(); // quebra linha para ficar abaixo dos símbolos
         }
 
         return sw.toString();
     }
+
 }
