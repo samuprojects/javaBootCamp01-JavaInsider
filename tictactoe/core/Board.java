@@ -4,6 +4,9 @@ import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.util.Arrays;
 
+import static java.util.Objects.requireNonNull;
+
+@SuppressWarnings("ALL")
 public class Board {
 
     // o tabuleiro é representado por uma matriz de 3 x 3
@@ -57,6 +60,20 @@ public class Board {
         }
 
         return sw.toString();
+    }
+
+    public void update (Symbol symbol, Coord coord){
+        requireNonNull(symbol); // validação para não aceitar símbolo nulo
+        requireNonNull(coord); // validação para não aceitar coordenada nula
+
+        if (symbol == Symbol.NONE){ // validação para não permitir uso do NONE (espaço em branco)
+            throw new IllegalArgumentException("None cannot be added to board");
+        }
+
+        if (matrix[coord.i()][coord.j()] != Symbol.NONE) { // validação para verificar se já existe jogada de outro player
+            throw new IllegalArgumentException("Play is not possible");
+        }
+        matrix[coord.i()][coord.j()] = symbol;
     }
 
 }
