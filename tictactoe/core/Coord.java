@@ -1,10 +1,19 @@
 package tictactoe.core;
 
 import static java.util.Objects.requireNonNull;
+import static tictactoe.core.Board.SIZE;
+import static tictactoe.util.ValidationUtils.require;
 
 @SuppressWarnings("ALL")
 public record Coord(int i, int j) {
     // relembrando que uma classe record representa a capacidade da classe agrupar informações
+
+    // o construtor de Record é um pouco diferente do normal pois não tem os parenteses e te dá acessos aos parametros já informados anteriormente
+    public Coord {
+        require(i >= 0 && i < SIZE, "i is out of range"); // utilizado classe utilitária genérica para validar número das coordenadas digitadas
+        require(i >= 0 && i < SIZE, "j is out of range");
+    }
+
 
     public static Coord parse(String text) { // vai transformar o texto digitado pelo usuário num objeto Coord para representar a jogada linha, coluna
 
