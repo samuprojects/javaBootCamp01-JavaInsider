@@ -62,7 +62,7 @@ public class Board {
         return sw.toString();
     }
 
-    public void update (Symbol symbol, Coord coord){
+    public Symbol update (Symbol symbol, Coord coord){ // alteração para retornar Symbol do ganhador ou null antes da proxima jogada
         requireNonNull(symbol); // validação para não aceitar símbolo nulo
         requireNonNull(coord); // validação para não aceitar coordenada nula
 
@@ -74,6 +74,12 @@ public class Board {
             throw new IllegalArgumentException("Play is not possible");
         }
         matrix[coord.i()][coord.j()] = symbol;
+        return findSequence(); // verificar se teve ganhador
+    }
+
+    private Symbol findSequence() {
+
+        return null;
     }
 
 }
