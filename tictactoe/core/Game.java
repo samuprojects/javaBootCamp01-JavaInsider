@@ -14,14 +14,17 @@ public class Game {
         Symbol winner = null; // variável criada para armazenar informação da checagem se há vencedor ou não
 
         // primeira versão do loop do jogo
-        while (winner == null) { // alterado para loop enquanto não tiver um ganhador, ou seja, enquanto winner for null
+        while (winner == null && !board.isFull()) { // alterado para loop enquanto não tiver um ganhador, ou seja, enquanto winner for null + não tiver mais espaços
             Output.writeNewLine();
             Output.write(board); // mostra o tabuleiro em branco
             winner = play(players.next()); // players.next é o proximo símbolo do jogador na jogada
         }
 
-        Output.write(String.format("%s is the winner!", winner));
-
+        if(board.isFull()){ // incluído verificação de empate ou vencedor
+            Output.write("No winner");
+        } else {
+            Output.write(String.format("%s is the winner!", winner));
+        }
     }
 
     private Symbol play(Symbol symbol) { // método com validação só prossegue quando jogada válida
