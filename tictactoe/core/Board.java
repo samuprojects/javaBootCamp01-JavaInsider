@@ -62,11 +62,11 @@ public class Board {
         return sw.toString();
     }
 
-    public Symbol update (Symbol symbol, Coord coord){ // alteração para retornar Symbol do ganhador ou null antes da proxima jogada
+    public Symbol update(Symbol symbol, Coord coord) { // alteração para retornar Symbol do ganhador ou null antes da proxima jogada
         requireNonNull(symbol); // validação para não aceitar símbolo nulo
         requireNonNull(coord); // validação para não aceitar coordenada nula
 
-        if (symbol == Symbol.NONE){ // validação para não permitir uso do NONE (espaço em branco)
+        if (symbol == Symbol.NONE) { // validação para não permitir uso do NONE (espaço em branco)
             throw new IllegalArgumentException("None cannot be added to board");
         }
 
@@ -80,7 +80,7 @@ public class Board {
     public boolean isFull() {
         for (int i = 0; i < SIZE; i++) {
             for (int j = 0; j < SIZE; i++) {
-                if (matrix[i][j] == Symbol.NONE){
+                if (matrix[i][j] == Symbol.NONE) {
                     return false;
                 }
             }
@@ -120,16 +120,39 @@ public class Board {
                 : null;
     }
 
-    private Symbol findSequenceInColumns() {
-
+    private Symbol findSequenceInColumns() { // varre as colunas
+        for (int j = 0; j < SIZE; j++) {
+            Symbol symbol = findSequenceInColumn(j);
+            if (symbol != null) {
+                return symbol;
+            }
+        }
         return null;
     }
 
-    private Symbol findSequenceInDiagonals() {
+    private Symbol findSequenceInColumn(int j) { // faz a busca coluna
+        return matrix[0][j] == matrix[1][j]
+                && matrix[1][j] == matrix[2][j]
+                && matrix[0][j] != Symbol.NONE
+                ? matrix[0][j]
+                : null;
+    }
+
+    private Symbol findSequenceInDiagonals() { // busca nas diagonais
+        if (matrix[0][0] == matrix[1][1]
+                && matrix[1][1] == matrix[2][2]
+                && matrix[0][0] != Symbol.NONE
+        ) {
+            return matrix[0][2];
+        }
+
+        if (matrix[0][2] == matrix[1][1]
+                && matrix[1][1] == matrix[2][0]
+                && matrix[0][2] != Symbol.NONE
+        ) {
+            return matrix[0][2];
+        }
 
         return null;
     }
-
-
-
 }
