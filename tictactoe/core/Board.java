@@ -12,7 +12,7 @@ public class Board {
     // o tabuleiro é representado por uma matriz de 3 x 3
     public static final int SIZE = 3;
 
-    public final Symbol[][] matrix = new Symbol[SIZE][SIZE];
+    private final Symbol[][] matrix = new Symbol[SIZE][SIZE];
 
     // tabuleiro deve iniciar vazio com símbolo do NONE
     public Board() {
@@ -54,9 +54,8 @@ public class Board {
                 for (int j = 0; j < SIZE; j++) {
                     out.print("---"); // impressão linha separadora após a quebra da linha
                 }
+                out.println(); // quebra linha para ficar abaixo dos símbolos
             }
-
-            out.println(); // quebra linha para ficar abaixo dos símbolos
         }
 
         return sw.toString();
@@ -79,7 +78,7 @@ public class Board {
 
     public boolean isFull() {
         for (int i = 0; i < SIZE; i++) {
-            for (int j = 0; j < SIZE; i++) {
+            for (int j = 0; j < SIZE; j++) {
                 if (matrix[i][j] == Symbol.NONE) {
                     return false;
                 }
@@ -143,7 +142,7 @@ public class Board {
                 && matrix[1][1] == matrix[2][2]
                 && matrix[0][0] != Symbol.NONE
         ) {
-            return matrix[0][2];
+            return matrix[0][0];
         }
 
         if (matrix[0][2] == matrix[1][1]

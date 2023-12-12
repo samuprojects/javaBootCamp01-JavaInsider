@@ -20,10 +20,12 @@ public class Game {
             winner = play(players.next()); // players.next é o proximo símbolo do jogador na jogada
         }
 
-        if(board.isFull()){ // incluído verificação de empate ou vencedor
-            Output.write("No winner");
-        } else {
+        Output.write(board); // mostrar tabuleiro após vitória
+
+        if(winner != null){ // incluído verificação de empate ou vencedor
             Output.write(String.format("%s is the winner!", winner));
+        } else {
+            Output.write("No winner");
         }
     }
 

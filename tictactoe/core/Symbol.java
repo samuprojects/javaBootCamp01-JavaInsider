@@ -10,8 +10,8 @@ public enum Symbol {
     private final char charSymbol; // a informação do símbolo deve ser armazenada em algum lugar, esta variável, e é final porque não será alterada.
 
     Symbol(char charSymbol) {
-        this.charSymbol = charSymbol; // o valor recebido no construtor vai para o atributo
-    }
+        this.charSymbol = charSymbol;
+    } // o valor recebido no construtor vai para o atributo
 
     // para usar a reprersentação visual dentro do construtor, sobrescrever o método toString
     // porque o toString do enum retorna o próprio elemento, ou seja, com o tabuleiro em branco

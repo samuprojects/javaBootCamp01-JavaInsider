@@ -11,7 +11,7 @@ public record Coord(int i, int j) {
     // o construtor de Record é um pouco diferente do normal pois não tem os parenteses e te dá acessos aos parametros já informados anteriormente
     public Coord {
         require(i >= 0 && i < SIZE, "i is out of range"); // utilizado classe utilitária genérica para validar número das coordenadas digitadas
-        require(i >= 0 && i < SIZE, "j is out of range");
+        require(j >= 0 && j < SIZE, "j is out of range");
     }
 
 
